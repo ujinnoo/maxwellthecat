@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxwell the Cat</title>
+    <style>
+        body { margin: 0; padding: 0; height: 10000px; background-image: url(./CAT/bg.jpg); background-size: 300%; background-attachment: fixed;}
+        #img {
+            position: fixed;
+            top: 30%;
+            left: 36%;
+            width: 400px;
+            box-sizing: border-box;
+        }
+        #text { position: fixed; top: 150px; left: 40%; }
+    </style>
+</head>
+
+<body>
+    <p style="position: fixed; left: 250px; font-weight: bold;" id="dDay">종강까지 D-Day</p>
+    <h1 id="text">MAxWell tHE cAt</h1>
+    <audio style="position: fixed; width: 220px; height: 30px; top: 10px; left: 10px;" src="./CAT/Maxwell the Cat Theme.mp3" autoplay loop controls></audio>
+    <img id="img">
+    <script>
+        const element = document.getElementById("img");
+        const totalNum = 39;
+        let frame = 0;
+        let height;
+
+        element.setAttribute("src", "./CAT/0.png");
+
+        window.addEventListener("scroll", function () {
+            height = Math.floor(window.scrollY / (document.body.clientHeight - window.innerHeight) * 100);
+            frame = Math.floor(totalNum * height / 100);
+            element.setAttribute("src", "./CAT/" + frame + ".png");
+            document.getElementById("t1").innerText = "clientHeight: " + document.body.clientHeight;
+            document.getElementById("t2").innerText = "innerHeight: " + window.innerHeight;
+            document.getElementById("t3").innerText = "scrollY: " + window.scrollY;
+            document.getElementById("t4").innerText = "clientHeight-innerHeight: " + (document.body.clientHeight - window.innerHeight);
+            document.getElementById("t5").innerText = height + " %";
+            document.getElementById("t6").innerText = frame + " frame";
+        });
+
+        // 변수의 선언
+        let dDay = new Date("2023-06-21"); // D-Day 날짜 설정
+        let nowDate;
+        let diffDate;
+        let day;
+        let hour;
+        let minute;
+        let second;
+
+        setInterval(function(){
+            nowDate = new Date();
+            diffDate = dDay - nowDate;
+            if (diffDate > 0) {
+                day = Math.floor(diffDate / (1000 * 60 * 60 * 24));
+                hour = Math.floor((diffDate / (1000 * 60 * 60)) % 24);
+                minute = Math.floor((diffDate / (1000 * 60)) % 60);
+                second = Math.floor((diffDate / 1000) % 60);
+                document.getElementById("dDay").innerText = `종강까지 ${day}일 ${hour}시간 ${minute}분 ${second}초 남았다! 시간아 달려라~~~~~`;
+            } else {
+                document.getElementById("dDay").innerText = "종강이다 유후~~!";
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>
