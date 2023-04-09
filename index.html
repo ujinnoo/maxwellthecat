@@ -22,7 +22,7 @@
 <body>
     <p style="position: fixed; left: 250px; font-weight: bold;" id="dDay">종강까지 D-Day</p>
     <h1 id="text">MAxWell tHE cAt</h1>
-    <audio style="position: fixed; width: 220px; height: 30px; top: 10px; left: 10px;" src="./CAT/Maxwell the Cat Theme.mp3" autoplay loop controls></audio>
+    <audio style="position: fixed; width: 220px; height: 30px; top: 10px; left: 10px;" src="./CAT/Maxwell the Cat Theme.mp3" loop controls></audio>
     <img id="img">
     <script>
         const element = document.getElementById("img");
@@ -66,6 +66,9 @@
                 document.getElementById("dDay").innerText = "종강이다 유후~~!";
             }
         }, 1000);
+        
+        const audio = document.querySelector("audio");
+        audio.play();
     </script>
 </body>
 
